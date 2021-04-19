@@ -1,0 +1,11 @@
+name: 'Clean Git Status'
+description: 'Checks that git status is clean at the very end'
+author: 'zimbatm'
+inputs: {}
+branding:
+  color: 'orange'
+  icon: 'sun'
+runs:
+  using: 'node12'
+  main: 'main.js'
+  post: 'post.js'
