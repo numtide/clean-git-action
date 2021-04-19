@@ -1,9 +1,14 @@
-# Clean Git Action - leave no build artifacts behind.
+# Clean Git Status Action - leave no build artifacts behind.
 
-A very small GitHub Action that checks that there are no files left
-behind after a build.
+A very small GitHub Action that checks that the `git status` is clean at the
+end of a build.
 
-What happens on larger project is that the build process tends to drift and a bunch of changed or untracked files exist at the end of the CI run. Generally, this means that either a file got automatically updated and should be committed to the repo, or some files are generated and should be added to the `.gitignore`.
+Build process tends to drift and leave files behind that are either changed or
+untracked. Generally when that happens, it can be either of those two things:
+
+1. A new build artifact appeared, that should be added to `.gitignore`
+2. Some `.lock` file or other generated file was updated and needs to be
+   committed to the repo.
 
 By adding this simple action to your project, you make sure that these issues
 are surfaced early.
@@ -15,6 +20,14 @@ Add the following step to your action YAML
 ```yaml:
 - uses: numtide/clean-git-action@v1
 ```
+
+Here is how it looks like on success:
+
+![success](./success.png)
+
+Here is how it looks like on failure:
+
+![failure](./failure.png)
 
 That's it!
 
